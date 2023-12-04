@@ -509,9 +509,9 @@ app = FastAPI()
 #http://localhost:8000/get_all_data?qurry=<your_query_here>&searcharea=<your_search_area_here>&searchCity=<your_search_city_here>@current_page=1
 # http://localhost:8000/get_all_data?qurry=Computers&searcharea=Delhi&searchCity=Delhi&current_page=2
 @app.get("/get_all_data")
-def get_all_data(qurry: str = Query(...), searcharea: str = Query(...), searchCity: str = Query(...), current_page: str = Query(...)):
+def get_all_data(q: str = Query(...), searcharea: str = Query(...), searchCity: str = Query(...), current_page: str = Query(...)):
     # print(qurry, searcharea, searchCity)
-    all_data = extract_data(qurry, searcharea, searchCity,current_page)  # Call your existing function to get all data
+    all_data = extract_data(q, searcharea, searchCity,current_page)  # Call your existing function to get all data
     return {"data": all_data}
 
 if __name__ == "__main__":
